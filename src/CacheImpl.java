@@ -1,8 +1,12 @@
-public class CacheImpl extends TaskBaseImpl{
+import java.util.ArrayList;
+import java.util.List;
+
+public class CacheImpl extends TaskBaseImpl {
+    private List<TaskModel> tasklist = new ArrayList<>();
 
     @Override
     public void add(TaskModel model) {
-
+        tasklist.add(model);
     }
 
     @Override
@@ -22,6 +26,8 @@ public class CacheImpl extends TaskBaseImpl{
 
     @Override
     public void list() {
-
+        for (TaskModel taskModel : tasklist) {
+            System.out.println("Tasktitel ist: " + taskModel.getTitle());
+        }
     }
 }
