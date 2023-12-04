@@ -1,2 +1,3 @@
-public abstract class TaskBaseImpl {
+public abstract class TaskBaseImpl implements ITask{
+
 }
