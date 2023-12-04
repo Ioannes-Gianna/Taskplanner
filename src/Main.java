@@ -12,4 +12,10 @@ public class Main {
 
 
     }
+    public void menueAnzeige(){
+        //Scanner Klasse
+    }
+    public void taskAnlegen(){
+        //Wie soll der Task heißen über Scannerklasse anzeigen, Objekt(taskModel) übernehmen und hinzufügen.
+    }
 }
