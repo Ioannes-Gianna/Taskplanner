@@ -24,4 +24,9 @@ public class DBImpl extends TaskBaseImpl
     public void list() {
 
     }
+
+    @Override
+    public TaskModel getbyID(int id) {
+        return null;
+    }
 }

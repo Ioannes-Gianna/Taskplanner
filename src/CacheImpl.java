@@ -8,9 +8,14 @@ public class CacheImpl extends TaskBaseImpl {
     public void add(TaskModel model) {
         tasklist.add(model);
     }
+   @Override
+    public TaskModel getbyID(int id){
+        return tasklist.get(id);
+    }
 
     @Override
     public void delete(TaskModel model) {
+        tasklist.remove(model);
 
     }
 
@@ -27,7 +32,8 @@ public class CacheImpl extends TaskBaseImpl {
     @Override
     public void list() {
         for (TaskModel taskModel : tasklist) {
-            System.out.println("Tasktitel ist: " + taskModel.getTitle());
+            int index = tasklist.indexOf(taskModel);
+            System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle());
         }
     }
 }

@@ -27,5 +27,5 @@ public interface ITask {
      * Wir listen alle Tasks auf
      */
     void list();
-
+    public abstract TaskModel getbyID(int id);
 }
