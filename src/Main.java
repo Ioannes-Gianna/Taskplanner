@@ -11,13 +11,21 @@ public class Main {
             menue.menueAnzeige();
             switch (menue.userEingabe()) {
                 case 1: //Alle vorhandenen Tasks auflisten
-                    cacheImpl.list();
+                    cacheImpl.list(true);
                     break;
                 case 2:  //Einen Task anlegen
                     String titel = menue.userEingabe("Bitte geben Sie den Tasknamen ein: ");
 
                     final TaskModel taskmodel1 = new TaskModel();
                     taskmodel1.setTitle(titel);
+
+
+                    String isDescriptionRequested = menue.userEingabe("Möchten Sie eine Beschreibung hinzufügen ? [Ja/Nein]: ");
+                    if (isDescriptionRequested.toLowerCase().contains("ja")) {
+                        String note = menue.userEingabe("Geben Sie nun eine Beschreibung für den Task ein: ");
+                        taskmodel1.setNote(note);
+
+                    }
                     cacheImpl.add(taskmodel1);
                     break;
                 case 3:
@@ -31,8 +39,16 @@ public class Main {
                     break;
                 case 5:
                     break;
-                case 6:
+                case 6: //Einen Task als abgeschlossen markieren
+                    cacheImpl.list(true);
+                    System.out.println("Wählen sie aus, welchen Task sie als abgeschlossen markieren möchten: ");
+                    int i = menue.userEingabe();
+                    TaskModel taskModel1 = cacheImpl.getbyID(i);
+                    taskModel1.setDone(true);
                     break;
+                case 7: // Alle Tasks erledigten Tasks auflisten
+                    cacheImpl.list(false);
+
             }
         }
 

@@ -21,7 +21,7 @@ public class DBImpl extends TaskBaseImpl
     }
 
     @Override
-    public void list() {
+    public void list(boolean onlyOpenTasks) {
 
     }
 

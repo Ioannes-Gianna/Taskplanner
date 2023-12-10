@@ -10,7 +10,8 @@ public class Menue {
                 .append("3.: Einen Task bearbeiten \n")
                 .append("4.: Einen Task löschen \n")
                 .append("5.: Einen Task priorisieren \n")
-                .append("6.: Einen Task als abgeschlossen markieren \n");
+                .append("6.: Einen Task als abgeschlossen markieren \n")
+                .append("7.: Alle Tasks auflisten die als abgeschlossen sind \n");
 
         System.out.println(sb);
     }
@@ -25,6 +26,12 @@ public class Menue {
         System.out.println(message);
         Scanner scanner1 = new Scanner(System.in);
         return scanner1.nextLine();
+    }
+
+    public boolean userEingabeYesNo(String message){
+        System.out.println(message);
+        Scanner scanner1 = new Scanner(System.in);
+        return scanner1.nextBoolean();
     }
 
 }

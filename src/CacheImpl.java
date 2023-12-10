@@ -28,12 +28,28 @@ public class CacheImpl extends TaskBaseImpl {
     public void setDone(TaskModel model) {
 
     }
-
     @Override
-    public void list() {
+    public void list(boolean onlyOpenTasks) {
         for (TaskModel taskModel : tasklist) {
-            int index = tasklist.indexOf(taskModel);
-            System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle());
+            if (onlyOpenTasks){
+                if (!taskModel.isDone()) {
+                    int index = tasklist.indexOf(taskModel);
+                    System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle()+" \n * " + taskModel.getNote());
+                }
+            }else{
+                if (taskModel.isDone()) {
+                    int index = tasklist.indexOf(taskModel);
+                    System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle()+" \n * " + taskModel.getNote());
+                }
+            }
+
+            //Taskauflistung die nicht fertig markiert sind
+
+
         }
+
+
     }
+
+
 }
