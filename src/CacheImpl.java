@@ -21,7 +21,16 @@ public class CacheImpl extends TaskBaseImpl {
 
     @Override
     public void edit(TaskModel model) {
+        for (TaskModel task : tasklist) {
+            if (task.getId() == model.getId()) {
+                task.setTitle(model.getTitle());
+                task.setNote(model.getNote());
 
+                System.out.println("Task erfolgreich bearbeitet.");
+                return;
+            }
+        }
+        System.out.println("Der angegebene Task wurde nicht gefunden. Bitte geben Sie eine gültige ID ein.");
     }
 
     @Override

@@ -4,6 +4,10 @@ public class TaskModel {
     private int weight;
     private boolean isDone;
 
+    private int id;
+
+
+
     public String getTitle() {
         return title;
     }
@@ -35,4 +39,11 @@ public class TaskModel {
     public void setDone(boolean done) {
         isDone = done;
     }
+
+
+    public int getId() {
+        return this.id;
+    }
+
+
 }

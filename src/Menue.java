@@ -31,7 +31,9 @@ public class Menue {
     public boolean userEingabeYesNo(String message){
         System.out.println(message);
         Scanner scanner1 = new Scanner(System.in);
-        return scanner1.nextBoolean();
+        String input = scanner1.nextLine().toLowerCase(); // Eingegebene Zeichenfolge in Kleinbuchstaben konvertieren
+
+        return input.equals("ja"); // Prüfen, ob die Eingabe "Ja" ist
     }
 
 }

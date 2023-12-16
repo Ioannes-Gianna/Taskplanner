@@ -28,7 +28,29 @@ public class Main {
                     }
                     cacheImpl.add(taskmodel1);
                     break;
-                case 3:
+                case 3: // Einen vorhandenen Task editieren
+                    String taskEditierenAbfrage = menue.userEingabe("Möchten Sie einen Task editieren ? [Ja/Nein]: ");
+                    if (taskEditierenAbfrage.toLowerCase().contains("ja")) {
+                        System.out.println("Geben Sie nun die zu editierende ID ein: ");
+                        int index = menue.userEingabe();
+                        TaskModel taskModel = cacheImpl.getbyID(index); // Holen des zu bearbeitenden Tasks anhand der ID
+
+                        if (taskModel != null) {
+                            boolean editTitle = menue.userEingabeYesNo("Möchten Sie den Titel bearbeiten? [Ja/Nein]: ");
+                            if (editTitle) {
+                                String newTitle = menue.userEingabe("Geben Sie den neuen Titel ein: ");
+                                taskModel.setTitle(newTitle);
+                            }
+
+                            boolean editDescription = menue.userEingabeYesNo("Möchten Sie die Beschreibung bearbeiten? [Ja/Nein]: ");
+                            if (editDescription) {
+                                String newDescription = menue.userEingabe("Geben Sie die neue Beschreibung ein: ");
+                                taskModel.setNote(newDescription);
+                            }
+
+                            cacheImpl.edit(taskModel);
+                        }
+                    }
                     break;
                 case 4:  //Einen Task löschen
                     System.out.println("Geben Sie die zu löschende ID ein: ");
