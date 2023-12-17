@@ -11,9 +11,12 @@ public class Main {
             menue.menueAnzeige();
             switch (menue.userEingabe()) {
                 case 1: //Alle vorhandenen Tasks auflisten
+                {
                     cacheImpl.list(true);
-                    break;
+                }
+                break;
                 case 2:  //Einen Task anlegen
+                {
                     String titel = menue.userEingabe("Bitte geben Sie den Tasknamen ein: ");
 
                     final TaskModel taskmodel1 = new TaskModel();
@@ -27,8 +30,10 @@ public class Main {
 
                     }
                     cacheImpl.add(taskmodel1);
-                    break;
+                }
+                break;
                 case 3: // Einen vorhandenen Task editieren
+                {
                     String taskEditierenAbfrage = menue.userEingabe("Möchten Sie einen Task editieren ? [Ja/Nein]: ");
                     if (taskEditierenAbfrage.toLowerCase().contains("ja")) {
                         System.out.println("Geben Sie nun die zu editierende ID ein: ");
@@ -51,25 +56,43 @@ public class Main {
                             cacheImpl.edit(taskModel);
                         }
                     }
-                    break;
+                }
+                break;
                 case 4:  //Einen Task löschen
+                {
                     System.out.println("Geben Sie die zu löschende ID ein: ");
                     int index = menue.userEingabe();
                     TaskModel taskModel = cacheImpl.getbyID(index);
                     cacheImpl.delete(taskModel);
                     System.out.println("Der Task mit dem Titel " + taskModel.getTitle() + " wurde gelöscht!");
-                    break;
-                case 5:
-                    break;
+                }
+                break;
+                case 5: //Einen Task priorisieren
+                {
+                    cacheImpl.list(true);
+                    System.out.println("Geben Sie die zu priorisierende ID ein: ");
+                    int index = menue.userEingabe();
+                    System.out.println("Geben Sie die neue Gewichtung für Ihren Task ein: ");
+                    int weight = menue.userEingabe();
+                    TaskModel taskModel = cacheImpl.getbyID(index);
+                    taskModel.setWeight(weight);
+
+                }
+
+                break;
                 case 6: //Einen Task als abgeschlossen markieren
+                {
                     cacheImpl.list(true);
                     System.out.println("Wählen sie aus, welchen Task sie als abgeschlossen markieren möchten: ");
                     int i = menue.userEingabe();
                     TaskModel taskModel1 = cacheImpl.getbyID(i);
                     taskModel1.setDone(true);
-                    break;
+                }
+                break;
                 case 7: // Alle Tasks erledigten Tasks auflisten
+                {
                     cacheImpl.list(false);
+                }
 
             }
         }

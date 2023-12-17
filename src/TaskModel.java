@@ -1,4 +1,4 @@
-public class TaskModel {
+public class TaskModel implements Comparable <TaskModel> {
     private String title;
     private String note;
     private int weight;
@@ -41,9 +41,25 @@ public class TaskModel {
     }
 
 
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
 
-
+    /**
+     * Compare Interface für die Collections-Klasse. Wenn weight == model.getWeight dann ist das Objekt gleich und ändert seine Position nicht.
+     * Wenn weight < model.getWeight dann wird die Position vom Objekt nach vorne geschoben.
+     * Wenn weight > model.getWeight dann wird die Position vom Objekt nach hinten geschoben.
+     * @param model the object to be compared.
+     * @return
+     */
+    @Override
+    public int compareTo(TaskModel model) {
+        if (weight == model.getWeight()){
+            return 0;
+        }
+        if (weight < model.getWeight()){
+            return -1;
+        }
+        return 1;
+    }
 }

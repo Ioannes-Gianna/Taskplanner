@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CacheImpl extends TaskBaseImpl {
@@ -39,6 +40,7 @@ public class CacheImpl extends TaskBaseImpl {
     }
     @Override
     public void list(boolean onlyOpenTasks) {
+        Collections.sort(tasklist);
         for (TaskModel taskModel : tasklist) {
             if (onlyOpenTasks){
                 if (!taskModel.isDone()) {
