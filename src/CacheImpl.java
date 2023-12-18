@@ -1,12 +1,18 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class CacheImpl extends TaskBaseImpl {
     private List<TaskModel> tasklist = new ArrayList<>();
+    private Scanner scanner = new Scanner(System.in);
 
     @Override
     public void add(TaskModel model) {
+        System.out.println("Geben Sie die Gewichtung für Ihren Task ein: ");
+        int weight = scanner.nextInt();
+        model.setWeight(weight);
+
         tasklist.add(model);
     }
    @Override
@@ -45,12 +51,12 @@ public class CacheImpl extends TaskBaseImpl {
             if (onlyOpenTasks){
                 if (!taskModel.isDone()) {
                     int index = tasklist.indexOf(taskModel);
-                    System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle()+" \n * " + taskModel.getNote());
+                    System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle()+" \n * " + taskModel.getNote() +" \n Gewichtung: " + taskModel.getWeight() );
                 }
             }else{
                 if (taskModel.isDone()) {
                     int index = tasklist.indexOf(taskModel);
-                    System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle()+" \n * " + taskModel.getNote());
+                    System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle()+" \n * " + taskModel.getNote()+" \n Gewichtung: " + taskModel.getWeight());
                 }
             }
 
