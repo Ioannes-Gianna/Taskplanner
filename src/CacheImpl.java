@@ -9,10 +9,9 @@ public class CacheImpl extends TaskBaseImpl {
 
     @Override
     public void add(TaskModel model) {
-        System.out.println("Geben Sie die Gewichtung für Ihren Task ein: ");
-        int weight = scanner.nextInt();
-        model.setWeight(weight);
-
+        if (model.getPrio() == 0){
+            model.setPrio(999);
+        }
         tasklist.add(model);
     }
    @Override
@@ -68,7 +67,14 @@ public class CacheImpl extends TaskBaseImpl {
 
     private void outputLog(TaskModel taskModel) {
         int index = tasklist.indexOf(taskModel);
-        System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle()+" \n * " + taskModel.getNote() +" \n Gewichtung: " + taskModel.getWeight());
+
+        if (taskModel.getNote() == null ){
+            System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle() +" \n Prio: " + taskModel.getPrio());
+        }else{
+            System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle()+" \n * " + taskModel.getNote() +" \n Prio: " + taskModel.getPrio());
+        }
+
+
     }
 
 

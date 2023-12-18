@@ -27,6 +27,14 @@ public class Main {
                     if (isDescriptionRequested.toLowerCase().contains("ja")) {
                         String note = menue.userEingabe("Geben Sie nun eine Beschreibung für den Task ein: ");
                         taskmodel1.setNote(note);
+                    }
+
+                    String isWeightRequested = menue.userEingabe("Möchten Sie eine Prio hinzufügen ? [Ja/Nein]: ");
+                    if (isWeightRequested.toLowerCase().contains("ja")) {
+                        System.out.println("Geben Sie die Prio für Ihren Task ein: ");
+                        int weight = menue.userEingabe();
+                        taskmodel1.setPrio(weight);
+
 
                     }
                     cacheImpl.add(taskmodel1);
@@ -75,7 +83,7 @@ public class Main {
                     System.out.println("Geben Sie die neue Gewichtung für Ihren Task ein: ");
                     int weight = menue.userEingabe();
                     TaskModel taskModel = cacheImpl.getbyID(index);
-                    taskModel.setWeight(weight);
+                    taskModel.setPrio(weight);
 
                 }
 

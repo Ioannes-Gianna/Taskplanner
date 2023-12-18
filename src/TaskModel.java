@@ -1,7 +1,7 @@
 public class TaskModel implements Comparable <TaskModel> {
     private String title;
     private String note;
-    private int weight;
+    private int prio;
     private boolean isDone;
 
     private int id;
@@ -24,12 +24,12 @@ public class TaskModel implements Comparable <TaskModel> {
         this.note = note;
     }
 
-    public int getWeight() {
-        return weight;
+    public int getPrio() {
+        return prio;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public void setPrio(int weight) {
+        this.prio = weight;
     }
 
     public boolean isDone() {
@@ -54,10 +54,10 @@ public class TaskModel implements Comparable <TaskModel> {
      */
     @Override
     public int compareTo(TaskModel model) {
-        if (weight == model.getWeight()){
+        if (prio == model.getPrio()){
             return 0;
         }
-        if (weight < model.getWeight()){
+        if (prio < model.getPrio()){
             return -1;
         }
         return 1;
