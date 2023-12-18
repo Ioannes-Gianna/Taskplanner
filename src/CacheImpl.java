@@ -50,13 +50,11 @@ public class CacheImpl extends TaskBaseImpl {
         for (TaskModel taskModel : tasklist) {
             if (onlyOpenTasks){
                 if (!taskModel.isDone()) {
-                    int index = tasklist.indexOf(taskModel);
-                    System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle()+" \n * " + taskModel.getNote() +" \n Gewichtung: " + taskModel.getWeight() );
+                    outputLog(taskModel);
                 }
             }else{
                 if (taskModel.isDone()) {
-                    int index = tasklist.indexOf(taskModel);
-                    System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle()+" \n * " + taskModel.getNote()+" \n Gewichtung: " + taskModel.getWeight());
+                    outputLog(taskModel);
                 }
             }
 
@@ -66,6 +64,11 @@ public class CacheImpl extends TaskBaseImpl {
         }
 
 
+    }
+
+    private void outputLog(TaskModel taskModel) {
+        int index = tasklist.indexOf(taskModel);
+        System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle()+" \n * " + taskModel.getNote() +" \n Gewichtung: " + taskModel.getWeight());
     }
 
 
