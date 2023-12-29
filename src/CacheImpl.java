@@ -12,22 +12,22 @@ public class CacheImpl extends TaskBaseImpl {
         if (model.getPrio() == 0){
             model.setPrio(999);
         }
-        tasklist.add(model);
+        this.tasklist.add(model);
     }
    @Override
     public TaskModel getbyID(int id){
-        return tasklist.get(id);
+        return this.tasklist.get(id);
     }
 
     @Override
     public void delete(TaskModel model) {
-        tasklist.remove(model);
+        this.tasklist.remove(model);
 
     }
 
     @Override
     public void edit(TaskModel model) {
-        for (TaskModel task : tasklist) {
+        for (TaskModel task : this.tasklist) {
             if (task.getId() == model.getId()) {
                 task.setTitle(model.getTitle());
                 task.setNote(model.getNote());
@@ -39,43 +39,20 @@ public class CacheImpl extends TaskBaseImpl {
         System.out.println("Der angegebene Task wurde nicht gefunden. Bitte geben Sie eine gültige ID ein.");
     }
 
-    @Override
-    public void setDone(TaskModel model) {
 
-    }
     @Override
     public void list(boolean onlyOpenTasks) {
-        Collections.sort(tasklist);
-        for (TaskModel taskModel : tasklist) {
+        Collections.sort(this.tasklist);
+        for (TaskModel taskModel : this.tasklist) {
             if (onlyOpenTasks){
                 if (!taskModel.isDone()) {
-                    outputLog(taskModel);
+                    super.outputLog(taskModel, this.tasklist);
                 }
             }else{
                 if (taskModel.isDone()) {
-                    outputLog(taskModel);
+                    super.outputLog(taskModel, this.tasklist);
                 }
             }
-
-            //Taskauflistung die nicht fertig markiert sind
-
-
         }
-
-
     }
-
-    private void outputLog(TaskModel taskModel) {
-        int index = tasklist.indexOf(taskModel);
-
-        if (taskModel.getNote() == null ){
-            System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle() +" \n Prio: " + taskModel.getPrio());
-        }else{
-            System.out.println("ID: " + index + " - Tasktitel ist: " + taskModel.getTitle()+" \n * " + taskModel.getNote() +" \n Prio: " + taskModel.getPrio());
-        }
-
-
-    }
-
-
 }

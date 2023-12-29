@@ -18,12 +18,6 @@ public interface ITask {
     void edit(TaskModel model);
 
     /**
-     * Wir markieren einen Task als erledigt
-     * @param model
-     */
-    void setDone(TaskModel model);
-
-    /**
      * Wir listen alle Tasks auf
      */
     void list(boolean isOpen);
